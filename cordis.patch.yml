@@ -1,0 +1,6 @@
+# Bundle patch for dsh-vibe-mode: composes the host plugin (the /vibe command,
+# director policy, and vibe_* worker tools) and, through the package's
+# dsh.client declaration, the web Vibe chip.
+- insert:
+    - id: vibe-mode
+      name: dsh-vibe-mode
