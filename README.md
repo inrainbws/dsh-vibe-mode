@@ -1,11 +1,23 @@
 # dsh-vibe-mode
 
+English | [简体中文](README.zh-CN.md)
+
 Context management is everything.
 
 [omp's vibe mode](https://omp.sh/docs/vibe) for DeepSeek Harness. `/vibe` turns the
 session into a **director**. The director only reads and supervises. Persistent
 `fast` and `good` worker subagents do the editing, searching, running and building,
 and each worker's turn result comes back to the director to verify.
+
+![Vibe mode: the director briefs fast and good workers and verifies the results they send back](docs/vibe-mode.svg)
+
+## Install
+
+```sh
+dsh plugin --profile web add dsh-vibe-mode
+```
+
+Replace `web` with the profile you want vibe mode in.
 
 ## Usage
 

@@ -2,12 +2,13 @@
   "name": "dsh-vibe-mode",
   "description": "omp-style vibe mode for DeepSeek Harness: the session becomes a read-only director that drives persistent fast/good worker subagents",
   "version": "0.1.0",
+  "author": "inrainbws",
   "type": "module",
   "main": "lib/index.js",
-  "types": "lib/types/index.d.ts",
+  "types": "lib/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/types/index.d.ts",
+      "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
     "./client": {
@@ -21,6 +22,19 @@
     "cordis.patch.yml"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inrainbws/dsh-vibe-mode.git"
+  },
+  "homepage": "https://github.com/inrainbws/dsh-vibe-mode#readme",
+  "bugs": "https://github.com/inrainbws/dsh-vibe-mode/issues",
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "vibe-mode",
+    "subagents"
+  ],
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"

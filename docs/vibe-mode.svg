@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="400" viewBox="0 0 860 400" role="img" aria-labelledby="title desc">
+  <title id="title">How vibe mode works</title>
+  <desc id="desc">You give the director a directive. The director can only read and supervise. It briefs persistent fast and good workers with vibe_spawn and vibe_send; the workers edit, search, run and build, and each finished turn comes back to the director as a vibe-turn result to verify.</desc>
+  <style>
+    .bg { fill: #ffffff; }
+    .fg { fill: #1f2328; }
+    .muted { fill: #59636e; }
+    .no { fill: #cf222e; }
+    .line { stroke: #59636e; }
+    .head { fill: #59636e; }
+    .box { fill: #f6f8fa; stroke: #d1d9e0; }
+    .director { fill: #ddf4ff; stroke: #0969da; }
+    .worker { fill: #dafbe1; stroke: #1a7f37; }
+    .rule { stroke: #0969da; stroke-opacity: .35; }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; font-size: 13px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; }
+    .title { font-size: 16px; font-weight: 600; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0d1117; }
+      .fg { fill: #e6edf3; }
+      .muted { fill: #9198a1; }
+      .no { fill: #f85149; }
+      .line { stroke: #9198a1; }
+      .head { fill: #9198a1; }
+      .box { fill: #151b23; stroke: #3d444d; }
+      .director { fill: #0c2d6b; stroke: #4493f8; }
+      .worker { fill: #0f3d1f; stroke: #3fb950; }
+      .rule { stroke: #4493f8; }
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="head" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="860" height="400" rx="8"/>
+
+  <!-- You -->
+  <rect class="box" x="20" y="148" width="120" height="74" rx="8" stroke-width="1.5"/>
+  <text class="fg title" x="80" y="178" text-anchor="middle">You</text>
+  <text class="muted mono" x="80" y="200" text-anchor="middle">/vibe &lt;task&gt;</text>
+  <line class="line" x1="140" y1="185" x2="186" y2="185" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Director -->
+  <rect class="director" x="190" y="60" width="280" height="250" rx="10" stroke-width="2"/>
+  <text class="fg title" x="330" y="92" text-anchor="middle">Director</text>
+  <text class="muted" x="330" y="112" text-anchor="middle">reads and supervises, never edits</text>
+  <line class="rule" x1="210" y1="128" x2="450" y2="128" stroke-width="1"/>
+  <text class="muted" x="212" y="150">keeps</text>
+  <text class="fg mono" x="212" y="170">read · read_image · todo_write</text>
+  <text class="muted" x="212" y="198">gains</text>
+  <text class="fg mono" x="212" y="218">vibe_spawn · vibe_send</text>
+  <text class="fg mono" x="212" y="236">vibe_wait · vibe_kill · vibe_list</text>
+  <text class="muted" x="212" y="264">loses</text>
+  <text class="no" x="212" y="284">every edit, search, run and build tool</text>
+
+  <!-- fast worker -->
+  <rect class="worker" x="650" y="40" width="200" height="120" rx="10" stroke-width="2"/>
+  <text class="fg title" x="750" y="70" text-anchor="middle">fast worker</text>
+  <text class="muted" x="750" y="92" text-anchor="middle">low-latency model</text>
+  <text class="muted" x="750" y="110" text-anchor="middle">mechanical, well-specified work</text>
+  <text class="fg" x="750" y="138" text-anchor="middle">edits · searches · runs · builds</text>
+
+  <!-- good worker -->
+  <rect class="worker" x="650" y="210" width="200" height="120" rx="10" stroke-width="2"/>
+  <text class="fg title" x="750" y="240" text-anchor="middle">good worker</text>
+  <text class="muted" x="750" y="262" text-anchor="middle">strong model</text>
+  <text class="muted" x="750" y="280" text-anchor="middle">design, debugging, review</text>
+  <text class="fg" x="750" y="308" text-anchor="middle">edits · searches · runs · builds</text>
+
+  <!-- director -> fast -->
+  <line class="line" x1="470" y1="82" x2="646" y2="82" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text class="fg mono" x="560" y="74" text-anchor="middle">vibe_spawn / vibe_send</text>
+  <line class="line" x1="650" y1="124" x2="474" y2="124" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text class="fg mono" x="560" y="142" text-anchor="middle">&lt;vibe-turn&gt; result</text>
+
+  <!-- director -> good -->
+  <line class="line" x1="470" y1="246" x2="646" y2="246" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text class="fg mono" x="560" y="238" text-anchor="middle">vibe_spawn / vibe_send</text>
+  <line class="line" x1="650" y1="288" x2="474" y2="288" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text class="fg mono" x="560" y="306" text-anchor="middle">&lt;vibe-turn&gt; result</text>
+
+  <!-- caption -->
+  <text class="muted" x="430" y="356" text-anchor="middle">Workers do the noisy work in their own child sessions. The director only sees the briefs it sends</text>
+  <text class="muted" x="430" y="376" text-anchor="middle">and the trimmed results that come back, then reads the touched files to verify them.</text>
+</svg>
